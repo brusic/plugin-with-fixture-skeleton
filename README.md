@@ -13,6 +13,13 @@ the recent versions have many fixes.  Elasticsearch versions below 5.5 that requ
 
 Master is based off of 5.6
 
+## Changes
+
+Elasticversion version | changes
+-----------|-----------
+5.5 | Initial version
+5.6 | License and notice files are required
+
 ## The hidden cookbook: main takeaways for what is needed for plugin development.
 * Each external process run during the gradle test phase requires both a pid and ports file. The test cluster provides 
 said files, but any custom fixtures created most support these files. [ExampleFixture](test/fixtures/example-fixture/src/main/java/example/ExampleFixture.java) shows an example.
