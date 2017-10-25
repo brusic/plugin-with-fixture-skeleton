@@ -1,0 +1,4 @@
+apply plugin: 'java'
+
+// Fixtures are simply external processes.
+// The do not need to be Elasticsearch projects unless the properties/task/libs are needed

@@ -1,0 +1,47 @@
+buildscript {
+    repositories {
+        mavenCentral()
+        maven {
+            name 'sonatype-snapshots'
+            url "https://oss.sonatype.org/content/repositories/snapshots/"
+        }
+        jcenter()
+    }
+    dependencies {
+        classpath "org.elasticsearch.gradle:build-tools:${elasticsearch_version}"
+    }
+}
+
+group 'org.elasticsearch.plugin'
+version '1.0-SNAPSHOT'
+
+apply plugin: 'elasticsearch.esplugin'
+apply plugin: 'idea'
+
+esplugin {
+    description 'Example plugin with fixture'
+    classname 'org.elasticsearch.plugin.example.ExamplePlugin'
+}
+
+test.enabled = false
+licenseHeaders.enabled = false
+
+configurations {
+    exampleFixture
+}
+
+dependencies {
+    exampleFixture project(':test:fixtures:example-fixture')
+}
+
+task exampleFixture(type: org.elasticsearch.gradle.test.AntFixture) {
+    dependsOn project.configurations.exampleFixture
+    executable = new File(project.javaHome, 'bin/java')
+    args '-cp', "${ -> project.configurations.exampleFixture.asPath }",
+            'example.ExampleFixture',
+            baseDir
+}
+
+integTestCluster {
+    dependsOn exampleFixture
+}
