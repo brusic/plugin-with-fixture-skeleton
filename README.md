@@ -20,6 +20,7 @@ Elasticversion version | changes
 5.5 | Initial version
 5.6 | License and notice files are required
 6.0 | projectSubstitutions bug was fixed
+6.1 | No changes
 
 ## The hidden cookbook: main takeaways for what is needed for plugin development.
 * Each external process run during the gradle test phase requires both a pid and ports file. The test cluster provides 
