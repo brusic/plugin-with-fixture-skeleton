@@ -11,7 +11,7 @@ up in the build chain. This simple plugin shows the bare minimum needed to get r
 The minimum version built in this example is Elasticsearch 5.5. The [build tools](https://github.com/elastic/elasticsearch/tree/master/buildSrc/src/main/groovy/org/elasticsearch/gradle) have evolved quickly since the transition to Gradle from Maven and 
 the recent versions have many fixes.  Elasticsearch versions below 5.5 that require some minor syntax changes, which I will ignore. It is best to use recent versions for ease of plugin development.
 
-Master is based off of 5.6
+Master is based off of 6.0
 
 ## Changes
 
@@ -19,10 +19,13 @@ Elasticversion version | changes
 -----------|-----------
 5.5 | Initial version
 5.6 | License and notice files are required
+6.0 | No changes
 
 ## The hidden cookbook: main takeaways for what is needed for plugin development.
 * Each external process run during the gradle test phase requires both a pid and ports file. The test cluster provides 
 said files, but any custom fixtures created most support these files. [ExampleFixture](test/fixtures/example-fixture/src/main/java/example/ExampleFixture.java) shows an example.
-* Both an unit test and integration test (ESTestCase) are required for the build to complete. For this example, there is [ExampleTest](src/test/java/org/elasticsearch/plugin/example/ExampleTest.java) and [ExampleIT](src/test/java/org/elasticsearch/plugin/example/ExampleTest.java).
+* Both an unit test and integration test (ESTestCase) are required for the build to complete. For this example, there is [ExampleTest](src/test/java/org/elasticsearch/plugin/example/ExampleTest.java) and [ExampleIT](src/test/java/org/elasticsearch/plugin/example/ExampleIT.java).
 * Using the elasticsearch plugin plugin enables numerous bootstrap checks. It is best to disable as many as possible. Even Elasticsearch's official plugins disable these checks.
 * Testing has shown that the integration test cluster does not clean up after itself nicely. Always run the 'clean' task before a build. 'gradle clean build'
+
+Need help? Feel free to open an issue.
