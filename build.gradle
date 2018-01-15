@@ -30,7 +30,6 @@ esplugin {
 // required for Elasticsearch 5.6+
 project.licenseFile = project.rootProject.file('LICENSE')
 project.noticeFile = project.rootProject.file('NOTICE')
-project.ext.projectSubstitutions = ["": ""] // seems like a bug
 
 test.enabled = false
 licenseHeaders.enabled = false
